@@ -1,6 +1,8 @@
 #pragma once
 
 #include <glad/glad.h>
+#include <glm/glm.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
 
 #include <string>
@@ -17,6 +19,7 @@ public:
 	void SetInt(const std::string& name, int value);
 	void SetFloat(const std::string& name, float value);
 	void Set2Float(const std::string& name, float v1, float v2);
+	void SetMat4(const std::string& name, glm::mat4 value);
 
 private:
 	unsigned int id;

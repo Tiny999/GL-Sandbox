@@ -38,6 +38,12 @@ void Shader::Set2Float(const std::string& name, float v1, float v2)
 	glUniform2f(location, v1, v2);
 }
 
+void Shader::SetMat4(const std::string& name, glm::mat4 value)
+{
+	int location = glGetUniformLocation(id, name.c_str());
+	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(value));
+}
+
 std::string Shader::LoadShader(const std::string& path)
 {
 	std::ifstream file;
