@@ -50,6 +50,19 @@ int main()
 
 	glViewport(0, 0, 800, 600);
 
+	// Camera 
+	glm::vec3 camPos = glm::vec3(0.f, 0.f, 3.f);
+	glm::vec3 camTarget = glm::vec3(0.f);
+	glm::vec3 camDir = glm::normalize(camTarget - camPos);
+
+	glm::vec3 up = glm::vec3(0.f, 1.f, 0.f);
+	glm::vec3 camRight = glm::cross(up, camDir);
+
+	glm::vec3 camUp = glm::cross(camDir, camRight);
+
+
+
+	// Data
 
 	float vertices[] = {
 	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
@@ -147,8 +160,13 @@ int main()
 		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glm::mat4 view = glm::mat4(1.f);
-		view = glm::translate(view, glm::vec3(0.f, 0.f, -3.f));
+		float radius = 15.f;
+		float camX = sin(glfwGetTime()) * radius;
+		float camZ = cos(glfwGetTime()) * radius;
+
+
+		glm::mat4 view;
+		view = glm::lookAt(glm::vec3(camX, 0.f, camZ), glm::vec3(0.f), glm::vec3(0.f, 1.f, 0.f));
 
 		glm::mat4 projection;
 		projection = glm::perspective(glm::radians(45.f), 800.f / 600.f, 0.1f, 100.f);
