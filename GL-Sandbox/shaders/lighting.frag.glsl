@@ -1,6 +1,12 @@
 #version 330 core
 
+in vec2 texCoord;
+
+//uniform sampler2D containerTex;
+uniform vec3 lightColor;
+uniform vec3 objectColor;
+
 void main()
 {
-	gl_FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);
-}
+	gl_FragColor = vec4(objectColor * lightColor, 1.f);
+} 

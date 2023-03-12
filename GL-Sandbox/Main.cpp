@@ -9,7 +9,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "Camera.h"
-#include "BasicLighting.h"
+#include "scenes/BasicLighting.h"
 
 
 void frameBufferResizeCallback(GLFWwindow* window, int width, int height);

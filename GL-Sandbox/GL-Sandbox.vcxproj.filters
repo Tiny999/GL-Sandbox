@@ -36,7 +36,7 @@
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="BasicLighting.cpp">
+    <ClCompile Include="scenes\BasicLighting.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +56,7 @@
     <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="BasicLighting.h">
+    <ClInclude Include="scenes\BasicLighting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -67,7 +67,7 @@
     <None Include="fragment.glsl">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="shaders\lightBulb.vertes.glsl">
+    <None Include="shaders\lightBulb.vertex.glsl">
       <Filter>Resource Files</Filter>
     </None>
     <None Include="shaders\lightBulb.frag.glsl">
@@ -77,6 +77,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="shaders\lighting.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\fragment.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>
