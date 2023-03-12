@@ -180,7 +180,7 @@ int main()
 		glm::mat4 projection;
 		projection = glm::perspective(glm::radians(45.f), 800.f / 600.f, 0.1f, 100.f);
 
-		lightingScene.Render(view, projection);
+		lightingScene.Render(camera, projection);
 
 		/*shader.Use();
 		glBindVertexArray(VAO);

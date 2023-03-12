@@ -6,7 +6,7 @@ void BasicLighting::Load()
 	LoadLightBulb();
 }
 
-void BasicLighting::Render(glm::mat4 view, glm::mat4 projection)
+void BasicLighting::Render(Camera& camera, glm::mat4& projection)
 {
 	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
@@ -17,13 +17,14 @@ void BasicLighting::Render(glm::mat4 view, glm::mat4 projection)
 
 	sceneShader.Use();
 
-	sceneShader.SetMat4("view", view);
+	sceneShader.SetMat4("view", camera.GetViewMatrix());
 	sceneShader.SetMat4("projection", projection);
 
 	glm::mat4 model = glm::mat4(1.f);
 
 	sceneShader.SetMat4("model", model);
 	sceneShader.SetVec3("lightPos", lightPos);
+	sceneShader.SetVec3("viewPos", camera.Position);
 
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -33,7 +34,7 @@ void BasicLighting::Render(glm::mat4 view, glm::mat4 projection)
 
 	lightBulbShader.Use();
 
-	lightBulbShader.SetMat4("view", view);
+	lightBulbShader.SetMat4("view", camera.GetViewMatrix());
 	lightBulbShader.SetMat4("projection", projection);
 
 

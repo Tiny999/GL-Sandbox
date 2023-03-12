@@ -13,7 +13,7 @@ class BasicLighting :
 public:
     BasicLighting() = default;
     void Load() override;
-    void Render(glm::mat4 view, glm::mat4 projection) override;
+    void Render(Camera& camera, glm::mat4& projection) override;
 
 private:
     void LoadLightBulb();

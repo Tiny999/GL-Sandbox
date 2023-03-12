@@ -8,6 +8,6 @@ class Scene
 {
 public:
 	virtual void Load() = 0;
-	virtual void Render(glm::mat4 view, glm::mat4 projection) = 0;
+	virtual void Render(Camera& camera, glm::mat4& projection) = 0;
 };
 
