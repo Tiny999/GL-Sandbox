@@ -1,7 +1,5 @@
 #include "BasicLighting.h"
 
-#include "../Texture.h"
-
 void BasicLighting::Load()
 {
 	LoadSceneLighting();
@@ -10,6 +8,9 @@ void BasicLighting::Load()
 
 void BasicLighting::Render(glm::mat4 view, glm::mat4 projection)
 {
+	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+
+
 	// Render Scene
 
 	glBindVertexArray(VAO);
@@ -22,6 +23,7 @@ void BasicLighting::Render(glm::mat4 view, glm::mat4 projection)
 	glm::mat4 model = glm::mat4(1.f);
 
 	sceneShader.SetMat4("model", model);
+	sceneShader.SetVec3("lightPos", lightPos);
 
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 
@@ -34,7 +36,6 @@ void BasicLighting::Render(glm::mat4 view, glm::mat4 projection)
 	lightBulbShader.SetMat4("view", view);
 	lightBulbShader.SetMat4("projection", projection);
 
-	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 	model = glm::translate(model, lightPos);
 	model = glm::scale(model, glm::vec3(.2f));
@@ -60,7 +61,7 @@ void BasicLighting::LoadLightBulb()
 
 
 	// Position
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
 
@@ -77,17 +78,15 @@ void BasicLighting::LoadSceneLighting()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 	// Position
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
 
-	// TexCoords
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	// Normal
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
 
 	sceneShader.Use();
-
-	Texture containerTex("assets/container.jpg");
 
 	sceneShader.Set3Float("objectColor", 1.f, .5f, .31f);
 	sceneShader.Set3Float("lightColor", 1.f, 1.f, 1.f);
