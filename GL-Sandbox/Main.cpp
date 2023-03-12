@@ -9,6 +9,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "Camera.h"
+#include "BasicLighting.h"
 
 
 void frameBufferResizeCallback(GLFWwindow* window, int width, int height);
@@ -25,11 +26,6 @@ Camera camera(glm::vec3(0.f, 0.f, 3.f));
 float lastX = SCR_WIDTH / 2.0f;
 float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
-
-
-glm::vec3 camPos = glm::vec3(0.f, 0.f, 3.f);
-glm::vec3 camFront = glm::vec3(0.f, 0.f, -1.f);
-glm::vec3 camUp = glm::vec3(0.f, 1.f, 0.f);
 
 float delta = 0.f;
 float lastFrame = 0.f;
@@ -71,88 +67,91 @@ int main()
 
 	// Data
 
-	float vertices[] = {
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	//float vertices[] = {
+	//-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	// 0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+	// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	//-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	//-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
 
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	// 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	// 0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	//-0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+	//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
 
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//-0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	//-0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	// 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	// 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	// 0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	// 0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	// 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
 
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	// 0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+	// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	// 0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	//-0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	//-0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
 
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
-	};
+	//-0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	// 0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	// 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	// 0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	//-0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+	//-0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+	//};
 
-	glm::vec3 cubePositions[] = {
-	glm::vec3(0.0f,  0.0f,  0.0f),
-	glm::vec3(2.0f,  5.0f, -15.0f),
-	glm::vec3(-1.5f, -2.2f, -2.5f),
-	glm::vec3(-3.8f, -2.0f, -12.3f),
-	glm::vec3(2.4f, -0.4f, -3.5f),
-	glm::vec3(-1.7f,  3.0f, -7.5f),
-	glm::vec3(1.3f, -2.0f, -2.5f),
-	glm::vec3(1.5f,  2.0f, -2.5f),
-	glm::vec3(1.5f,  0.2f, -1.5f),
-	glm::vec3(-1.3f,  1.0f, -1.5f)
-	};
+	//glm::vec3 cubePositions[] = {
+	//glm::vec3(0.0f,  0.0f,  0.0f),
+	//glm::vec3(2.0f,  5.0f, -15.0f),
+	//glm::vec3(-1.5f, -2.2f, -2.5f),
+	//glm::vec3(-3.8f, -2.0f, -12.3f),
+	//glm::vec3(2.4f, -0.4f, -3.5f),
+	//glm::vec3(-1.7f,  3.0f, -7.5f),
+	//glm::vec3(1.3f, -2.0f, -2.5f),
+	//glm::vec3(1.5f,  2.0f, -2.5f),
+	//glm::vec3(1.5f,  0.2f, -1.5f),
+	//glm::vec3(-1.3f,  1.0f, -1.5f)
+	//};
 
-	// Buffers
-	unsigned int VBO, VAO;
+	//// Buffers
+	//unsigned int VBO, VAO;
 
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
+	//glGenVertexArrays(1, &VAO);
+	//glBindVertexArray(VAO);
 
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
+	//glGenBuffers(1, &VBO);
+	//glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW);
+	//glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW);
 
-	// Position
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
+	//// Position
+	//glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	//glEnableVertexAttribArray(0);
 
-	// TexCoords
-	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
-	glEnableVertexAttribArray(1);
+	//// TexCoords
+	//glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	//glEnableVertexAttribArray(1);
 
-	// Shaders
-	Shader shader("vertex.glsl", "fragment.glsl");
+	//// Shaders
+	//Shader shader("shaders/vertex.glsl", "shaders/fragment.glsl");
 
 
-	// Textures
-	Texture container("assets/container.jpg");
+	//// Textures
+	//Texture container("assets/container.jpg");
+
+	BasicLighting lightingScene;
+	lightingScene.Load();
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -181,7 +180,9 @@ int main()
 		glm::mat4 projection;
 		projection = glm::perspective(glm::radians(45.f), 800.f / 600.f, 0.1f, 100.f);
 
-		shader.Use();
+		lightingScene.Render(view, projection);
+
+		/*shader.Use();
 		glBindVertexArray(VAO);
 
 
@@ -198,7 +199,7 @@ int main()
 			shader.SetMat4("model", model);
 
 			glDrawArrays(GL_TRIANGLES, 0, 36);
-		}
+		}*/
 
 		
 
