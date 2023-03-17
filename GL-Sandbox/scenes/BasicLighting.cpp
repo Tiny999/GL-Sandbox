@@ -62,7 +62,7 @@ void BasicLighting::LoadLightBulb()
 
 
 	// Position
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
 
@@ -79,13 +79,17 @@ void BasicLighting::LoadSceneLighting()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
 
 	// Position
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 
 
 	// Normal
-	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+	glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(3 * sizeof(float)));
 	glEnableVertexAttribArray(1);
+
+	// TexCoords
+	glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 8 * sizeof(float), (void*)(6 * sizeof(float)));
+	glEnableVertexAttribArray(2);
 
 	sceneShader.Use();
 
@@ -99,4 +103,17 @@ void BasicLighting::LoadSceneLighting()
 	sceneShader.Set3Float("light.ambient", 0.2f, 0.2f, 0.2f);
 	sceneShader.Set3Float("light.diffuse", 0.5f, 0.5f, 0.5f); // darken diffuse light a bit
 	sceneShader.Set3Float("light.specular", 1.0f, 1.0f, 1.0f);
+
+	// Textures
+	Texture containerTex("assets/container2.png");
+	glActiveTexture(GL_TEXTURE0);
+	containerTex.Use();
+
+	glActiveTexture(GL_TEXTURE1);
+	Texture containerSpecular("assets/container2_specular.png");
+	sceneShader.SetInt("material.specular", 1);
+	containerSpecular.Use();
+
+
+
 }
