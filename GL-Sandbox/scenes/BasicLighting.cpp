@@ -6,7 +6,7 @@ void BasicLighting::Load()
 	LoadLightBulb();
 }
 
-void BasicLighting::Render(Camera& camera, glm::mat4& projection)
+void BasicLighting::Render(Camera& camera, glm::mat4& projection, float delta)
 {
 	glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
@@ -23,7 +23,7 @@ void BasicLighting::Render(Camera& camera, glm::mat4& projection)
 	glm::mat4 model = glm::mat4(1.f);
 
 	sceneShader.SetMat4("model", model);
-	sceneShader.SetVec3("lightPos", lightPos);
+	sceneShader.SetVec3("light.position", lightPos);
 	sceneShader.SetVec3("viewPos", camera.Position);
 
 	glDrawArrays(GL_TRIANGLES, 0, 36);
@@ -89,6 +89,14 @@ void BasicLighting::LoadSceneLighting()
 
 	sceneShader.Use();
 
-	sceneShader.Set3Float("objectColor", 1.f, .5f, .31f);
-	sceneShader.Set3Float("lightColor", 1.f, 1.f, 1.f);
+	// Material
+	sceneShader.Set3Float("material.ambient", 1.0f, 0.5f, 0.31f);
+	sceneShader.Set3Float("material.diffuse", 1.0f, 0.5f, 0.31f);
+	sceneShader.Set3Float("material.specular", 0.5f, 0.5f, 0.5f);
+	sceneShader.SetFloat("material.shininess", 32.0f);
+
+	// Light
+	sceneShader.Set3Float("light.ambient", 0.2f, 0.2f, 0.2f);
+	sceneShader.Set3Float("light.diffuse", 0.5f, 0.5f, 0.5f); // darken diffuse light a bit
+	sceneShader.Set3Float("light.specular", 1.0f, 1.0f, 1.0f);
 }
