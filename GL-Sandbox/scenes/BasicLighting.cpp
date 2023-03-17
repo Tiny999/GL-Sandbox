@@ -19,14 +19,27 @@ void BasicLighting::Render(Camera& camera, glm::mat4& projection, float delta)
 
 	sceneShader.SetMat4("view", camera.GetViewMatrix());
 	sceneShader.SetMat4("projection", projection);
-
-	glm::mat4 model = glm::mat4(1.f);
-
-	sceneShader.SetMat4("model", model);
-	sceneShader.SetVec3("light.position", lightPos);
+	sceneShader.Set3Float("light.direction", -0.2f, -1.0f, -0.3f);
 	sceneShader.SetVec3("viewPos", camera.Position);
 
-	glDrawArrays(GL_TRIANGLES, 0, 36);
+	// PointLight
+	sceneShader.SetVec3("pointLight.position", lightPos);
+
+
+	glm::mat4 model = glm::mat4(1.f);
+	
+
+	for (unsigned int i = 0; i < 10; i++)
+	{
+		model = glm::mat4(1.f);
+		model = glm::translate(model, cubePositions[i]);
+		float angle = 20.f * i;
+		model = glm::rotate(model, glm::radians(angle), glm::vec3(1.f, .3f, .5f));
+		sceneShader.SetMat4("model", model);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+	}
+
+	
 
 	// Render LightBulb
 
@@ -36,7 +49,6 @@ void BasicLighting::Render(Camera& camera, glm::mat4& projection, float delta)
 
 	lightBulbShader.SetMat4("view", camera.GetViewMatrix());
 	lightBulbShader.SetMat4("projection", projection);
-
 
 	model = glm::translate(model, lightPos);
 	model = glm::scale(model, glm::vec3(.2f));
@@ -103,6 +115,15 @@ void BasicLighting::LoadSceneLighting()
 	sceneShader.Set3Float("light.ambient", 0.2f, 0.2f, 0.2f);
 	sceneShader.Set3Float("light.diffuse", 0.5f, 0.5f, 0.5f); // darken diffuse light a bit
 	sceneShader.Set3Float("light.specular", 1.0f, 1.0f, 1.0f);
+
+	// PointLight
+	sceneShader.SetFloat("pointLight.constant", 1.f);
+	sceneShader.SetFloat("pointLight.linear", .09f);
+	sceneShader.SetFloat("pointLight.quadratic", .032f);
+
+	sceneShader.Set3Float("pointLight.ambient", 0.2f, 0.2f, 0.2f);
+	sceneShader.Set3Float("pointLight.diffuse", 0.5f, 0.5f, 0.5f); // darken diffuse light a bit
+	sceneShader.Set3Float("pointLight.specular", 1.0f, 1.0f, 1.0f);
 
 	// Textures
 	Texture containerTex("assets/container2.png");
