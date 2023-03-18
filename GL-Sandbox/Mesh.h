@@ -9,12 +9,13 @@
 
 struct Vertex
 {
-	glm::vec3 Position, Normal, TexCoords;
+	glm::vec3 Position, Normal;
+	glm::vec2 TexCoords;
 };
 
 struct Texture
 {
-	std::string type;
+	std::string type, path;
 	unsigned int id;
 };
 
