@@ -25,6 +25,12 @@ void BasicLighting::Render(Camera& camera, glm::mat4& projection, float delta)
 	// PointLight
 	sceneShader.SetVec3("pointLight.position", lightPos);
 
+	// Spotlight
+	sceneShader.SetVec3("spotLight.position", camera.Position);
+	sceneShader.SetVec3("spotLight.direction", camera.Front);
+	sceneShader.SetFloat("spotLight.cutoff", glm::cos(glm::radians(12.5f)));
+	sceneShader.SetFloat("spotLight.outerCutOff", glm::cos(glm::radians(17.5f)));
+
 
 	glm::mat4 model = glm::mat4(1.f);
 	
@@ -124,6 +130,15 @@ void BasicLighting::LoadSceneLighting()
 	sceneShader.Set3Float("pointLight.ambient", 0.2f, 0.2f, 0.2f);
 	sceneShader.Set3Float("pointLight.diffuse", 0.5f, 0.5f, 0.5f); // darken diffuse light a bit
 	sceneShader.Set3Float("pointLight.specular", 1.0f, 1.0f, 1.0f);
+
+	// SpotLight
+	sceneShader.Set3Float("spotLight.ambient", 0.2f, 0.2f, 0.2f);
+	sceneShader.Set3Float("spotLight.diffuse", 0.5f, 0.5f, 0.5f); 
+	sceneShader.Set3Float("spotLight.specular", 1.0f, 1.0f, 1.0f);
+
+	sceneShader.SetFloat("spotLight.constant", 1.f);
+	sceneShader.SetFloat("spotLight.linear", .09f);
+	sceneShader.SetFloat("spotLight.quadratic", .032f);
 
 	// Textures
 	Texture containerTex("assets/container2.png");
