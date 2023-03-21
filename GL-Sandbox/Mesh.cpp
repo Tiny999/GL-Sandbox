@@ -1,6 +1,6 @@
 #include "Mesh.h"
 
-Mesh::Mesh(std::vector<Vertex> vertices, std::vector<Texture> textures, std::vector<unsigned int> indices)
+Mesh::Mesh(std::vector<Vertex> vertices, std::vector<Text> textures, std::vector<unsigned int> indices)
 	:
 	vertices(vertices),
 	indices(indices),
@@ -29,7 +29,7 @@ void Mesh::Draw(Shader& shader)
 			number = std::to_string(specularNr++);
 
 
-		shader.SetInt("material." + name + number, i);
+		shader.SetInt(name + number, i);
 		glBindTexture(GL_TEXTURE_2D, textures[i].id);
 
 		// Draw Mesh

@@ -10,6 +10,7 @@
 #include "Texture.h"
 #include "Camera.h"
 #include "scenes/BasicLighting.h"
+#include "scenes/ModelLoading.h"
 
 
 void frameBufferResizeCallback(GLFWwindow* window, int width, int height);
@@ -64,8 +65,7 @@ int main()
 
 	
 	// Scenes
-	BasicLighting lightingScene;
-	lightingScene.Load();
+	ModelLoading scene;
 
 	glEnable(GL_DEPTH_TEST);
 
@@ -94,7 +94,7 @@ int main()
 		glm::mat4 projection;
 		projection = glm::perspective(glm::radians(45.f), 800.f / 600.f, 0.1f, 100.f);
 
-		lightingScene.Render(camera, projection, delta);
+		scene.Render(camera, projection, delta);
 		
 
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

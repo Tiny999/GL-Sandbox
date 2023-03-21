@@ -154,6 +154,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scenes\BasicLighting.cpp" />
+    <ClCompile Include="scenes\ModelLoading.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Texture.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scenes\BasicLighting.h" />
+    <ClInclude Include="scenes\ModelLoading.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Texture.h" />
@@ -175,6 +177,8 @@
     <None Include="shaders\lightBulb.vertex.glsl" />
     <None Include="shaders\lighting.frag.glsl" />
     <None Include="shaders\lighting.vertex.glsl" />
+    <None Include="shaders\modelLoading.frag.glsl" />
+    <None Include="shaders\modelLoading.vertex.glsl" />
     <None Include="shaders\vertex.glsl" />
     <None Include="vertex.glsl" />
   </ItemGroup>
