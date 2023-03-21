@@ -5,6 +5,7 @@
 #include <glm/gtc/type_ptr.hpp>
 
 #include <iostream>
+#include <string>
 
 #include "Shader.h"
 #include "Texture.h"
@@ -65,7 +66,8 @@ int main()
 
 	
 	// Scenes
-	ModelLoading scene;
+	ModelLoading scene("shaders/modelLoading.vertex.glsl", "shaders/modelLoading.frag.glsl", "assets/models/backpack/backpack.obj");
+	scene.Load();
 
 	glEnable(GL_DEPTH_TEST);
 

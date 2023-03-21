@@ -13,6 +13,7 @@
 class Shader
 {
 public:
+	Shader() = default;
 	Shader(const std::string& vertexPath, const std::string& fragPath);
 	void Use();
 	void SetBool(const std::string& name, bool value);
