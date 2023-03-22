@@ -80,7 +80,7 @@ vec3 calcPointLight()
 	vec3 ambient = pointLight.ambient * vec3(texture(material.diffuse, texCoords));
 
 	vec3 norm = normalize(normal);
-	vec3 lightDir = normalize(-pointLight.position - fragPos);
+	vec3 lightDir = normalize(pointLight.position - fragPos);
 	float diff = max(dot(norm, lightDir), 0.f);
 	vec3 diffuse = pointLight.diffuse * (diff * vec3(texture(material.diffuse, texCoords)));
 
