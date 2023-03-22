@@ -154,6 +154,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scenes\BasicLighting.cpp" />
+    <ClCompile Include="scenes\DepthTest.cpp" />
     <ClCompile Include="scenes\ModelLoading.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="stb_image.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scenes\BasicLighting.h" />
+    <ClInclude Include="scenes\DepthTest.h" />
     <ClInclude Include="scenes\ModelLoading.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
@@ -172,6 +174,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="fragment.glsl" />
+    <None Include="shaders\depthTest.frag.glsl" />
+    <None Include="shaders\depthText.vertex.glsl" />
     <None Include="shaders\fragment.glsl" />
     <None Include="shaders\lightBulb.frag.glsl" />
     <None Include="shaders\lightBulb.vertex.glsl" />

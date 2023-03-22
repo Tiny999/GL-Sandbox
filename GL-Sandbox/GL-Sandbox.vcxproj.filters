@@ -48,6 +48,9 @@
     <ClCompile Include="scenes\ModelLoading.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="scenes\DepthTest.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -75,6 +78,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="scenes\ModelLoading.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\DepthTest.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -107,6 +113,12 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="shaders\modelLoading.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\depthTest.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\depthText.vertex.glsl">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

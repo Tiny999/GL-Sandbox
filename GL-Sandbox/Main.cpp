@@ -7,12 +7,9 @@
 #include <iostream>
 #include <string>
 
-#include "Shader.h"
-#include "Texture.h"
 #include "Camera.h"
-#include "scenes/BasicLighting.h"
-#include "scenes/ModelLoading.h"
 
+#include "scenes//DepthTest.h"
 
 void frameBufferResizeCallback(GLFWwindow* window, int width, int height);
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
@@ -66,7 +63,7 @@ int main()
 
 	
 	// Scenes
-	ModelLoading scene("shaders/modelLoading.vertex.glsl", "shaders/modelLoading.frag.glsl", "assets/models/backpack/backpack.obj");
+	DepthTest scene;
 	scene.Load();
 
 	glEnable(GL_DEPTH_TEST);
@@ -97,7 +94,6 @@ int main()
 		projection = glm::perspective(glm::radians(45.f), 800.f / 600.f, 0.1f, 100.f);
 
 		scene.Render(camera, projection, delta);
-		
 
 		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		
