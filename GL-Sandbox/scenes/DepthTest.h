@@ -5,6 +5,7 @@
 #include "../Texture.h"
 
 #include <vector>
+#include <map>
 
 class DepthTest :
     public Scene
@@ -90,7 +91,7 @@ private:
     // Textures
     Texture cubeTexture = Texture("assets/marble.jpg");
     Texture planeTexture = Texture("assets/metal.png");
-    Texture grassTexture = Texture("assets/grass.png");
+    Texture windowTexture = Texture("assets/blending_transparent_window.png");
 
     unsigned int cubeVAO, cubeVBO, planeVAO, planeVBO, transparentVAO, transparentVBO;
     Shader shader = Shader("shaders/depthTest.vertex.glsl", "shaders/depthTest.frag.glsl");
