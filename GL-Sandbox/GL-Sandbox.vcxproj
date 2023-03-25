@@ -175,6 +175,7 @@
   <ItemGroup>
     <None Include="fragment.glsl" />
     <None Include="shaders\depthTest.frag.glsl" />
+    <None Include="shaders\depthTest.vertex.glsl" />
     <None Include="shaders\depthText.vertex.glsl" />
     <None Include="shaders\fragment.glsl" />
     <None Include="shaders\lightBulb.frag.glsl" />

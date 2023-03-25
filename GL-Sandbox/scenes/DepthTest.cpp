@@ -19,7 +19,7 @@ void DepthTest::Load()
 
 	glBindVertexArray(0);
 
-	// Plane
+	// Plane (Floor)
 	glGenVertexArrays(1, &planeVAO);
 	glBindVertexArray(planeVAO);
 
@@ -36,9 +36,24 @@ void DepthTest::Load()
 
 	glBindVertexArray(0);
 
+	// Transparent Quad
+	glGenVertexArrays(1, &transparentVAO);
+	glBindVertexArray(transparentVAO);
+
+	glGenBuffers(1, &transparentVBO);
+	glBindBuffer(GL_ARRAY_BUFFER, transparentVBO);
+
+	glBufferData(GL_ARRAY_BUFFER, sizeof(transparentVertices), &transparentVertices, GL_STATIC_DRAW);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)0);
+	glEnableVertexAttribArray(0);
+
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+	
+
 	shader.Use();
 	shader.SetInt("texture1", 0);
-
+	
 
 }
 
@@ -74,6 +89,18 @@ void DepthTest::Render(Camera& camera, glm::mat4& projection, float delta)
 	shader.SetMat4("model", model);
 
 	glDrawArrays(GL_TRIANGLES, 0, 6);
+
+
+	// Draw Grass
+	glBindVertexArray(transparentVAO);
+	grassTexture.Use();
+	for (unsigned int i = 0; i < 5; i++)
+	{
+		model = glm::mat4(1.f);
+		model = glm::translate(model, vegetation[i]);
+		shader.SetMat4("model", model);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+	}
 
 	glBindVertexArray(0);
 

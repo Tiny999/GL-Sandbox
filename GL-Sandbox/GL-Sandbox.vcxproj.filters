@@ -121,6 +121,7 @@
     <None Include="shaders\depthText.vertex.glsl">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="shaders\depthTest.vertex.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\container.jpg">

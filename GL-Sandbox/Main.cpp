@@ -67,6 +67,8 @@ int main()
 	scene.Load();
 
 	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_STENCIL_TEST);
+	glDepthFunc(GL_LESS);
 
 
 	// Main Loop
@@ -77,7 +79,7 @@ int main()
 
 		// Rendering
 		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
 		float currentFrame = glfwGetTime();
 		delta = currentFrame - lastFrame;
