@@ -130,7 +130,7 @@ void FrameBuffer::LoadScene()
 	shader.SetInt("texture1", 0);
 
 	quadShader.Use();
-	quadShader.SetInt("screenShader", 0);
+	quadShader.SetInt("screenTexture", 0);
 }
 
 void FrameBuffer::BindFrameBuffer()
