@@ -2,8 +2,9 @@
 
 void FrameBuffer::Load()
 {
-	LoadFrameBuffer();
 	LoadScene();
+	LoadFrameBuffer();
+	
 }
 
 void FrameBuffer::Render(Camera& camera, glm::mat4& projection, float delta)
@@ -16,13 +17,14 @@ void FrameBuffer::Render(Camera& camera, glm::mat4& projection, float delta)
 	DrawScene(camera, projection);
 
 
-	UnbindFrameBuffer();
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glDisable(GL_DEPTH_TEST);
+
 	glClearColor(1.f, 1.f, 1.f, 1.f);
 	glClear(GL_COLOR_BUFFER_BIT);
 
 	quadShader.Use();
 	glBindVertexArray(quadVAO);
-	glDisable(GL_DEPTH_TEST);
 	glBindTexture(GL_TEXTURE_2D, textureAttachment);
 	glDrawArrays(GL_TRIANGLES, 0, 6);
 
@@ -31,6 +33,12 @@ void FrameBuffer::Render(Camera& camera, glm::mat4& projection, float delta)
 void FrameBuffer::CleanUp()
 {
 	glDeleteFramebuffers(1, &fbo);
+	glDeleteVertexArrays(1, &cubeVAO);
+	glDeleteVertexArrays(1, &planeVAO);
+	glDeleteVertexArrays(1, &quadVAO);
+	glDeleteBuffers(1, &cubeVBO);
+	glDeleteBuffers(1, &planeVBO);
+	glDeleteBuffers(1, &quadVBO);
 }
 
 void FrameBuffer::LoadFrameBuffer()
@@ -120,7 +128,9 @@ void FrameBuffer::LoadScene()
 
 	shader.Use();
 	shader.SetInt("texture1", 0);
-	quadShader.SetInt("texture1", 0);
+
+	quadShader.Use();
+	quadShader.SetInt("screenShader", 0);
 }
 
 void FrameBuffer::BindFrameBuffer()

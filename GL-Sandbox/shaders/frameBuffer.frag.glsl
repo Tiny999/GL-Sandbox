@@ -2,9 +2,9 @@
 
 in vec2 texCoords;
 
-uniform sampler2D texture1;
+uniform sampler2D screenShader;
 
 void main ()
 {
-	gl_FragColor = texture(texture1, texCoords);
+	gl_FragColor = texture(screenShader, texCoords);
 }
