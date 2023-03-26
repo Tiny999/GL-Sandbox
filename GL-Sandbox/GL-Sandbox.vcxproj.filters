@@ -128,6 +128,8 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="shaders\depthTest.vertex.glsl" />
+    <None Include="shaders\frameBuffer.frag.glsl" />
+    <None Include="shaders\frameBuffer.vertex.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\container.jpg">

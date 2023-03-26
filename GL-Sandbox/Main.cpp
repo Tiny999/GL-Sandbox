@@ -9,7 +9,8 @@
 
 #include "Camera.h"
 
-#include "scenes//DepthTest.h"
+#include "scenes/FrameBuffer.h"
+
 
 void frameBufferResizeCallback(GLFWwindow* window, int width, int height);
 void mouseCallback(GLFWwindow* window, double xpos, double ypos);
@@ -63,15 +64,15 @@ int main()
 
 	
 	// Scenes
-	DepthTest scene;
+	FrameBuffer scene;
 	scene.Load();
 
-	glEnable(GL_DEPTH_TEST);
+	/*glEnable(GL_DEPTH_TEST);
 	glEnable(GL_STENCIL_TEST);
 	glEnable(GL_BLEND);
 
 	glDepthFunc(GL_LESS);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);*/
 
 
 
@@ -82,16 +83,12 @@ int main()
 		processInput(window);
 
 		// Rendering
-		glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+		/*glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);*/
 
 		float currentFrame = glfwGetTime();
 		delta = currentFrame - lastFrame;
 		lastFrame = currentFrame;
-
-		float radius = 15.f;
-		float camX = sin(glfwGetTime()) * radius;
-		float camZ = cos(glfwGetTime()) * radius;
 
 
 		glm::mat4 view = camera.GetViewMatrix();
@@ -100,8 +97,6 @@ int main()
 		projection = glm::perspective(glm::radians(45.f), 800.f / 600.f, 0.1f, 100.f);
 
 		scene.Render(camera, projection, delta);
-
-		//glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		
 		glBindVertexArray(0);
 

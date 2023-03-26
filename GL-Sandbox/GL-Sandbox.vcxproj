@@ -180,6 +180,8 @@
     <None Include="shaders\depthTest.vertex.glsl" />
     <None Include="shaders\depthText.vertex.glsl" />
     <None Include="shaders\fragment.glsl" />
+    <None Include="shaders\frameBuffer.frag.glsl" />
+    <None Include="shaders\frameBuffer.vertex.glsl" />
     <None Include="shaders\lightBulb.frag.glsl" />
     <None Include="shaders\lightBulb.vertex.glsl" />
     <None Include="shaders\lighting.frag.glsl" />
