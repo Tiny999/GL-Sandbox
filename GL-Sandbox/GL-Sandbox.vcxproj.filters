@@ -54,6 +54,9 @@
     <ClCompile Include="scenes\FrameBuffer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="scenes\CubeMaps.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -87,6 +90,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="scenes\FrameBuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\CubeMaps.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -130,6 +136,8 @@
     <None Include="shaders\depthTest.vertex.glsl" />
     <None Include="shaders\frameBuffer.frag.glsl" />
     <None Include="shaders\frameBuffer.vertex.glsl" />
+    <None Include="shaders\cubeMaps.frag.glsl" />
+    <None Include="shaders\cubeMaps.vertex.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\container.jpg">

@@ -154,6 +154,7 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="scenes\BasicLighting.cpp" />
+    <ClCompile Include="scenes\CubeMaps.cpp" />
     <ClCompile Include="scenes\DepthTest.cpp" />
     <ClCompile Include="scenes\FrameBuffer.cpp" />
     <ClCompile Include="scenes\ModelLoading.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Model.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="scenes\BasicLighting.h" />
+    <ClInclude Include="scenes\CubeMaps.h" />
     <ClInclude Include="scenes\DepthTest.h" />
     <ClInclude Include="scenes\FrameBuffer.h" />
     <ClInclude Include="scenes\ModelLoading.h" />
@@ -176,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="fragment.glsl" />
+    <None Include="shaders\cubeMaps.frag.glsl" />
+    <None Include="shaders\cubeMaps.vertex.glsl" />
     <None Include="shaders\depthTest.frag.glsl" />
     <None Include="shaders\depthTest.vertex.glsl" />
     <None Include="shaders\depthText.vertex.glsl" />
