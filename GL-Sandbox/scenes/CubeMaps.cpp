@@ -21,21 +21,8 @@ void CubeMaps::Load()
 
 void CubeMaps::Render(Camera& camera, glm::mat4& projection, float delta)
 {
-	shader.Use();
-
-	glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
-
-	shader.SetMat4("view", view);
-	shader.SetMat4("projection", projection);
-
-	glDepthMask(GL_FALSE);
-
-	glBindVertexArray(skyboxVAO);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, id);
+	/// Draw model
 	
-	glDrawArrays(GL_TRIANGLES, 0, 36);
-
-	glDepthMask(GL_TRUE);
 
 	modelShader.Use();
 
@@ -48,10 +35,34 @@ void CubeMaps::Render(Camera& camera, glm::mat4& projection, float delta)
 	modelShader.SetMat4("model", model);
 
 	superman.Draw(modelShader);
+
+
+	shader.Use();
+
+	glm::mat4 view = glm::mat4(glm::mat3(camera.GetViewMatrix()));
+
+	shader.SetMat4("view", view);
+	shader.SetMat4("projection", projection);
+
+	glDepthMask(GL_FALSE);
+	glDepthFunc(GL_LEQUAL);
+
+	glBindVertexArray(skyboxVAO);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, id);
+	
+	glDrawArrays(GL_TRIANGLES, 0, 36);
+
+	glDepthFunc(GL_LESS);
+	glDepthMask(GL_TRUE);
+
+	
 }
 
 void CubeMaps::CleanUp()
 {
+	glDeleteTextures(1, &id);
+	glDeleteVertexArrays(1, &skyboxVAO);
+	glDeleteBuffers(1, &skyboxVBO);
 }
 
 void CubeMaps::LoadCubeMap()
