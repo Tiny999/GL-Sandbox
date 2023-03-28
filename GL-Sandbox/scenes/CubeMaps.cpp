@@ -36,6 +36,18 @@ void CubeMaps::Render(Camera& camera, glm::mat4& projection, float delta)
 	glDrawArrays(GL_TRIANGLES, 0, 36);
 
 	glDepthMask(GL_TRUE);
+
+	modelShader.Use();
+
+	modelShader.SetMat4("projection", projection);
+	modelShader.SetMat4("view", camera.GetViewMatrix());
+
+	glm::mat4 model = glm::mat4(1.f);
+	model = glm::translate(model, glm::vec3(0.f, -1.f, 0.f));
+
+	modelShader.SetMat4("model", model);
+
+	superman.Draw(modelShader);
 }
 
 void CubeMaps::CleanUp()

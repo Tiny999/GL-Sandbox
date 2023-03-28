@@ -3,6 +3,7 @@
 #include "../Scene.h"
 #include "../Shader.h"
 #include "../Texture.h"
+#include "../Model.h"
 
 #include <vector>
 #include <string>
@@ -62,8 +63,6 @@ private:
         -1.0f, -1.0f,  1.0f,
          1.0f, -1.0f,  1.0f
     };
-
-
 	std::vector<std::string> textures_faces = {
 		"assets/skybox/right.jpg",
 		"assets/skybox/left.jpg",
@@ -73,7 +72,10 @@ private:
 		"assets/skybox/back.jpg",
 	};
 
+    Model superman = Model("assets/models/superman/scene.gltf");
+
 	Shader shader = Shader("shaders/cubeMaps.vertex.glsl", "shaders/cubeMaps.frag.glsl");
+    Shader modelShader = Shader("shaders/basicModel.vertex.glsl", "shaders/basicModel.frag.glsl");
 
     void LoadCubeMap();
 };

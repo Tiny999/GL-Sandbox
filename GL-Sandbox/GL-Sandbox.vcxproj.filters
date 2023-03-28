@@ -138,6 +138,8 @@
     <None Include="shaders\frameBuffer.vertex.glsl" />
     <None Include="shaders\cubeMaps.frag.glsl" />
     <None Include="shaders\cubeMaps.vertex.glsl" />
+    <None Include="shaders\basicModel.frag.glsl" />
+    <None Include="shaders\basicModel.vertex.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\container.jpg">

@@ -178,6 +178,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="fragment.glsl" />
+    <None Include="shaders\basicModel.frag.glsl" />
+    <None Include="shaders\basicModel.vertex.glsl" />
     <None Include="shaders\cubeMaps.frag.glsl" />
     <None Include="shaders\cubeMaps.vertex.glsl" />
     <None Include="shaders\depthTest.frag.glsl" />

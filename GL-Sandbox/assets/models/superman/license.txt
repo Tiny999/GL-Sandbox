@@ -1,0 +1,11 @@
+Model Information:
+* title:	Superman Black Suit
+* source:	https://sketchfab.com/3d-models/superman-black-suit-5db4e3c3d94f4aa7985c06196238fc54
+* author:	TheSitthikorn (https://sketchfab.com/TheSitthikorn)
+
+Model License:
+* license type:	CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
+* requirements:	Author must be credited. No commercial use. Modified versions can not be distributed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Superman Black Suit" (https://sketchfab.com/3d-models/superman-black-suit-5db4e3c3d94f4aa7985c06196238fc54) by TheSitthikorn (https://sketchfab.com/TheSitthikorn) licensed under CC-BY-NC-ND-4.0 (http://creativecommons.org/licenses/by-nc-nd/4.0/)
