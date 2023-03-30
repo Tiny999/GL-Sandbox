@@ -10,6 +10,17 @@ Shader::Shader(const std::string& vertexPath, const std::string& fragPath)
 	glLinkProgram(id); 
 }
 
+Shader::Shader(const std::string& vertexPath, const std::string& fragPath, std::string& geomPath)
+{
+	id = glCreateProgram();
+
+	GenShader(vertexPath, GL_VERTEX_SHADER);
+	GenShader(fragPath, GL_FRAGMENT_SHADER);
+	GenShader(geomPath, GL_GEOMETRY_SHADER);
+
+	glLinkProgram(id);
+}
+
 void Shader::Use()
 {
 	glUseProgram(id);

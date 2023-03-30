@@ -15,6 +15,7 @@ class Shader
 public:
 	Shader() = default;
 	Shader(const std::string& vertexPath, const std::string& fragPath);
+	Shader(const std::string& vertexPath, const std::string& fragPath, std::string& geomPath);
 	void Use();
 	void SetBool(const std::string& name, bool value);
 	void SetInt(const std::string& name, int value);

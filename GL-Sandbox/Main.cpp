@@ -7,7 +7,7 @@
 #include <iostream>
 #include <string>
 
-#include "scenes/CubeMaps.h"
+#include "scenes/Instancing.h"
 
 
 void frameBufferResizeCallback(GLFWwindow* window, int width, int height);
@@ -65,7 +65,7 @@ int main()
    // -----------------------------
     glEnable(GL_DEPTH_TEST);
 
-	CubeMaps scene;
+	Instancing scene;
 	scene.Load();
 
 

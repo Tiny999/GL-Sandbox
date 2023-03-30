@@ -57,6 +57,9 @@
     <ClCompile Include="scenes\CubeMaps.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="scenes\Instancing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Shader.h">
@@ -93,6 +96,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="scenes\CubeMaps.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scenes\Instancing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -133,13 +139,29 @@
     <None Include="shaders\depthText.vertex.glsl">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="shaders\depthTest.vertex.glsl" />
-    <None Include="shaders\frameBuffer.frag.glsl" />
-    <None Include="shaders\frameBuffer.vertex.glsl" />
-    <None Include="shaders\cubeMaps.frag.glsl" />
-    <None Include="shaders\cubeMaps.vertex.glsl" />
-    <None Include="shaders\basicModel.frag.glsl" />
-    <None Include="shaders\basicModel.vertex.glsl" />
+    <None Include="shaders\basicModel.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\basicModel.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\cubeMaps.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\cubeMaps.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\depthTest.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\frameBuffer.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\frameBuffer.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\instancing.vertex.glsl" />
+    <None Include="shaders\instancing.frag.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\container.jpg">

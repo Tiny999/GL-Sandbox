@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="glad.c" />
+    <ClCompile Include="scenes\Instancing.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="scenes\CubeMaps.h" />
     <ClInclude Include="scenes\DepthTest.h" />
     <ClInclude Include="scenes\FrameBuffer.h" />
+    <ClInclude Include="scenes\Instancing.h" />
     <ClInclude Include="scenes\ModelLoading.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="stb_image.h" />
@@ -188,6 +190,8 @@
     <None Include="shaders\fragment.glsl" />
     <None Include="shaders\frameBuffer.frag.glsl" />
     <None Include="shaders\frameBuffer.vertex.glsl" />
+    <None Include="shaders\instancing.frag.glsl" />
+    <None Include="shaders\instancing.vertex.glsl" />
     <None Include="shaders\lightBulb.frag.glsl" />
     <None Include="shaders\lightBulb.vertex.glsl" />
     <None Include="shaders\lighting.frag.glsl" />
