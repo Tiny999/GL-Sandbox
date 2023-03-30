@@ -23,7 +23,7 @@ private:
          0.05f,  0.05f,  0.0f, 1.0f, 1.0f
     };
 
-    unsigned int VAO, VBO;
+    unsigned int VAO, VBO, instanceVBO;
 
 
     Shader shader = Shader("shaders/instancing.vertex.glsl", "shaders/instancing.frag.glsl");
