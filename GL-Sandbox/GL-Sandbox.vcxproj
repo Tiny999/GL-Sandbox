@@ -184,6 +184,8 @@
     <None Include="shaders\basicModel.vertex.glsl" />
     <None Include="shaders\cubeMaps.frag.glsl" />
     <None Include="shaders\cubeMaps.vertex.glsl" />
+    <None Include="shaders\debugQuad.frag.glsl" />
+    <None Include="shaders\debugQuad.vertex.glsl" />
     <None Include="shaders\depthTest.frag.glsl" />
     <None Include="shaders\depthTest.vertex.glsl" />
     <None Include="shaders\depthText.vertex.glsl" />
@@ -198,6 +200,10 @@
     <None Include="shaders\lighting.vertex.glsl" />
     <None Include="shaders\modelLoading.frag.glsl" />
     <None Include="shaders\modelLoading.vertex.glsl" />
+    <None Include="shaders\shadowMapping.frag.glsl" />
+    <None Include="shaders\shadowMapping.vertex.glsl" />
+    <None Include="shaders\simpleDepthShader.frag.glsl" />
+    <None Include="shaders\simpleDepthShader.vertex.glsl" />
     <None Include="shaders\vertex.glsl" />
     <None Include="vertex.glsl" />
   </ItemGroup>

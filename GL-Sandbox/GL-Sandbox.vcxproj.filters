@@ -160,8 +160,30 @@
     <None Include="shaders\frameBuffer.vertex.glsl">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="shaders\instancing.vertex.glsl" />
-    <None Include="shaders\instancing.frag.glsl" />
+    <None Include="shaders\instancing.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\instancing.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\simpleDepthShader.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\simpleDepthShader.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\debugQuad.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\debugQuad.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\shadowMapping.vertex.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="shaders\shadowMapping.frag.glsl">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\container.jpg">

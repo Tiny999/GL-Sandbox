@@ -2,6 +2,7 @@
 #include "../Scene.h"
 
 #include "../Shader.h"
+#include "../Model.h"
 
 class Instancing :
     public Scene
@@ -24,8 +25,13 @@ private:
     };
 
     unsigned int VAO, VBO, instanceVBO;
-
+    unsigned int amount = 1000;
+    glm::mat4* modelMatrices;
 
     Shader shader = Shader("shaders/instancing.vertex.glsl", "shaders/instancing.frag.glsl");
+    Shader modelShader = Shader("shaders/basicModel.vertex.glsl", "shaders/basicModel.frag.glsl");
+
+    Model planet = Model("assets/models/planet/planet.obj");
+    Model rock = Model("assets/models/rock/rock.obj");
 };
 
