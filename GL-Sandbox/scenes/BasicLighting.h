@@ -14,6 +14,7 @@ public:
     BasicLighting() = default;
     void Load() override;
     void Render(Camera& camera, glm::mat4& projection, float delta) override;
+    void CleanUp() override;
 
 private:
     void LoadLightBulb();

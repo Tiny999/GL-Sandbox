@@ -126,3 +126,7 @@ void DepthTest::Render(Camera& camera, glm::mat4& projection, float delta)
 
 
 }
+
+void DepthTest::CleanUp()
+{
+}

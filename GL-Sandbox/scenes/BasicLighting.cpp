@@ -68,6 +68,15 @@ void BasicLighting::Render(Camera& camera, glm::mat4& projection, float delta)
 
 }
 
+void BasicLighting::CleanUp()
+{
+	glDeleteVertexArrays(1, &VAO);
+	glDeleteVertexArrays(1, &lightVAO);
+	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &lightVBO);
+
+}
+
 void BasicLighting::LoadLightBulb()
 {
 	glGenVertexArrays(1, &lightVAO);

@@ -13,6 +13,7 @@ class DepthTest :
 public:
     void Load() override;
     void Render(Camera& camera, glm::mat4& projection, float delta) override;
+    void CleanUp() override;
 
 private:
     float cubeVertices[180] = {

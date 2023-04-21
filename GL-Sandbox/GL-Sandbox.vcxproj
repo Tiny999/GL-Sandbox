@@ -160,6 +160,7 @@
     <ClCompile Include="scenes\FrameBuffer.cpp" />
     <ClCompile Include="scenes\ModelLoading.cpp" />
     <ClCompile Include="Shader.cpp" />
+    <ClCompile Include="ShadowMapping.cpp" />
     <ClCompile Include="stb_image.cpp" />
     <ClCompile Include="Texture.cpp" />
   </ItemGroup>
@@ -175,6 +176,7 @@
     <ClInclude Include="scenes\Instancing.h" />
     <ClInclude Include="scenes\ModelLoading.h" />
     <ClInclude Include="Shader.h" />
+    <ClInclude Include="ShadowMapping.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="Texture.h" />
   </ItemGroup>
